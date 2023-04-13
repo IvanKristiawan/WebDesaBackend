@@ -11,13 +11,13 @@ const Rt = db.define(
       allowNull: false,
     },
     latitude: {
-      type: DataTypes.FLOAT,
-      defaultValue: 0,
+      type: DataTypes.STRING,
+      defaultValue: "0",
       allowNull: true,
     },
     longitude: {
-      type: DataTypes.FLOAT,
-      defaultValue: 0,
+      type: DataTypes.STRING,
+      defaultValue: "0",
       allowNull: true,
     },
   },
