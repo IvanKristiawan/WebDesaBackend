@@ -7,7 +7,7 @@ const { DataTypes } = Sequelize;
 const Penduduk = db.define(
   "penduduks",
   {
-    nikPenduduk: {
+    kkPenduduk: {
       type: DataTypes.STRING,
       allowNull: false,
     },

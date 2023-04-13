@@ -2,6 +2,7 @@ const express = require("express");
 const controller = require("../../controllers/Penduduk/PendudukController.js");
 const verify = require("../../../utils/verifyToken.js");
 const getPenduduks = controller.getPenduduks;
+const getPendudukByRt = controller.getPendudukByRt;
 const getPendudukById = controller.getPendudukById;
 const savePenduduk = controller.savePenduduk;
 const updatePenduduk = controller.updatePenduduk;
@@ -11,6 +12,7 @@ const verifyUser = verify.verifyUser;
 const router = express.Router();
 
 router.post("/penduduks", verifyUser, getPenduduks);
+router.post("/penduduksByRt", verifyUser, getPendudukByRt);
 router.post("/penduduks/:id", verifyUser, getPendudukById);
 router.post("/savePenduduk", verifyUser, savePenduduk);
 router.post("/updatePenduduk/:id", verifyUser, updatePenduduk);

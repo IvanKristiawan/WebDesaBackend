@@ -77,3 +77,13 @@ Content-Type: application/json
     "_id": 1,
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjgxMzQzODQ1LCJleHAiOjE2ODI2Mzk4NDV9.3VECIxvi142keY-4fAl4546AdmXGJXEgFDAbAauv6AI"
 }
+
+### Penduduk By Rt
+POST http://localhost:5000/penduduksByRt
+Content-Type: application/json
+
+{
+    "rtId": 1,
+    "_id": 1,
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjgxMzQzODQ1LCJleHAiOjE2ODI2Mzk4NDV9.3VECIxvi142keY-4fAl4546AdmXGJXEgFDAbAauv6AI"
+}

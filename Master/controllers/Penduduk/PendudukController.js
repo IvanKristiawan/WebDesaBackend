@@ -14,6 +14,21 @@ const getPenduduks = async (req, res) => {
   }
 };
 
+const getPendudukByRt = async (req, res) => {
+  try {
+    const penduduk = await Penduduk.findAll({
+      where: {
+        rtId: req.body.rtId,
+      },
+      include: [{ model: Rt }],
+    });
+    res.status(200).json(penduduk);
+  } catch (error) {
+    // Error 404 = Not Found
+    res.status(404).json({ message: error.message });
+  }
+};
+
 const getPendudukById = async (req, res) => {
   try {
     const penduduk = await Penduduk.findOne({
@@ -35,24 +50,18 @@ const savePenduduk = async (req, res) => {
       req.body[k] = req.body[k].toUpperCase().trim();
     }
   });
-  let rts = await Rt.findOne({
-    where: {
-      kodeRt: req.body.kodeRt,
-    },
-  });
   try {
-    // Find if NIK already exist
+    // Find if KK already exist
     const penduduk = await Penduduk.findOne({
       where: {
-        nikPenduduk: req.body.nikPenduduk,
+        kkPenduduk: req.body.kkPenduduk,
       },
     });
-    let nikPendudukExist = penduduk;
-    if (nikPendudukExist) {
-      res.status(400).json({ message: "NIK Sudah Ada!" });
+    let kkPendudukExist = penduduk;
+    if (kkPendudukExist) {
+      res.status(400).json({ message: "KK Sudah Ada!" });
     } else {
       const insertedPenduduk = await Penduduk.create({
-        rtId: rts.id,
         ...req.body,
       });
       // Status 201 = Created
@@ -70,26 +79,20 @@ const updatePenduduk = async (req, res) => {
       req.body[k] = req.body[k].toUpperCase().trim();
     }
   });
-  let rts = await Rt.findOne({
-    where: {
-      kodeRt: req.body.kodeRt,
-    },
-  });
   try {
-    // Find if NIK already exist and not current one
+    // Find if KK already exist and not current one
     const penduduk = await Penduduk.findOne({
       where: {
-        nikPenduduk: req.body.nikPenduduk,
+        kkPenduduk: req.body.kkPenduduk,
       },
     });
-    let nikPendudukExist =
-      penduduk && penduduk.dataValues.nikPenduduk !== req.body.nikPendudukLama;
-    if (nikPendudukExist) {
-      res.status(400).json({ message: "NIK Sudah Ada!" });
+    let kkPendudukExist =
+      penduduk && penduduk.dataValues.kkPenduduk !== req.body.kkPendudukLama;
+    if (kkPendudukExist) {
+      res.status(400).json({ message: "KK Sudah Ada!" });
     } else {
       await Penduduk.update(
         {
-          rtId: rts.id,
           ...req.body,
         },
         {
@@ -138,6 +141,7 @@ const deletePenduduk = async (req, res) => {
 
 module.exports = {
   getPenduduks,
+  getPendudukByRt,
   getPendudukById,
   savePenduduk,
   updatePenduduk,
