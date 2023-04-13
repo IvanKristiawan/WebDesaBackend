@@ -1,0 +1,79 @@
+### Get Save Tutup Periode
+POST http://localhost:5000/saveTutupPeriode
+Content-Type: application/json
+
+{
+    "namaPeriode": "DESEMBER 2022",
+    "dariTanggal": "2022-12-01",
+    "sampaiTanggal": "2022-12-31",
+    "kodeCabang": "001",
+    "_id": 1,
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjgxMzQzODQ1LCJleHAiOjE2ODI2Mzk4NDV9.3VECIxvi142keY-4fAl4546AdmXGJXEgFDAbAauv6AI"
+}
+
+### Register
+POST http://localhost:5000/auth/register
+Content-Type: application/json
+
+{
+    "username":"MANAGER",
+    "password": "MGR",
+    "tipeUser": "MANAGER",
+    "namaPeriode": "DESEMBER 2022",
+    "_id": 1,
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjgxMzQzODQ1LCJleHAiOjE2ODI2Mzk4NDV9.3VECIxvi142keY-4fAl4546AdmXGJXEgFDAbAauv6AI"
+}
+
+### Login
+POST http://localhost:5000/auth/login
+Content-Type: application/json
+
+{
+    "username":"MANAGER",
+    "password": "MGR"
+}
+
+### Save Hak Akses 
+POST http://localhost:5000/saveHakAkses
+Content-Type: application/json
+
+{
+      "penduduk": true,
+      "bankSampah": true,
+
+      "profilUser": true,
+      "daftarUser": true,
+      "setting": true,
+      "gantiPeriode": true,
+      "tutupPeriode": true,
+    "userId": 1,
+    "_id": 1,
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjgxMzQzODQ1LCJleHAiOjE2ODI2Mzk4NDV9.3VECIxvi142keY-4fAl4546AdmXGJXEgFDAbAauv6AI"
+}
+
+### Save Setting
+POST http://localhost:5000/saveSetting
+Content-Type: application/json
+
+{
+    "namaProgram": "TechKu",
+    "namaDesa": "KEMBANG PUTIHAN",
+    "alamatDesa": "JL. BANTUL",
+    "kotaDesa": "Bantul",
+    "provinsiDesa": "Yogyakarta",
+    "teleponDesa": "",
+    "_id": 1,
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjgxMzQzODQ1LCJleHAiOjE2ODI2Mzk4NDV9.3VECIxvi142keY-4fAl4546AdmXGJXEgFDAbAauv6AI"
+}
+
+### Save Rt
+POST http://localhost:5000/saveRt
+Content-Type: application/json
+
+{
+    "kodeRt": "01",
+    "latitude": -7.861130925840954,
+    "longitude": 110.31834167941108,
+    "_id": 1,
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjgxMzQzODQ1LCJleHAiOjE2ODI2Mzk4NDV9.3VECIxvi142keY-4fAl4546AdmXGJXEgFDAbAauv6AI"
+}
