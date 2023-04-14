@@ -87,3 +87,14 @@ Content-Type: application/json
     "_id": 1,
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjgxMzQzODQ1LCJleHAiOjE2ODI2Mzk4NDV9.3VECIxvi142keY-4fAl4546AdmXGJXEgFDAbAauv6AI"
 }
+
+### Save Posyandu Lansias
+POST http://localhost:5000/posyanduLansias
+Content-Type: application/json
+
+{
+    "dariTanggal": "2022-12-01",
+    "sampaiTanggal": "2022-12-31",
+    "_id": 1,
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjgxMzQzODQ1LCJleHAiOjE2ODI2Mzk4NDV9.3VECIxvi142keY-4fAl4546AdmXGJXEgFDAbAauv6AI"
+}

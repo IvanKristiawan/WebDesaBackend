@@ -23,6 +23,11 @@ const HakAkses = db.define(
       defaultValue: false,
       allowNull: false,
     },
+    posyanduLansia: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+      allowNull: false,
+    },
 
     // UTILITY
     profilUser: {
