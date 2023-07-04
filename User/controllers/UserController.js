@@ -82,7 +82,7 @@ const updateUser = async (req, res) => {
 
 const updateUserThenLogin = async (req, res) => {
   try {
-    // const findUser = await User.findById(req.params.id);
+    let periode;
     const findUser = await User.findOne({
       where: {
         id: req.params.id,
