@@ -15,6 +15,10 @@ const Penduduk = db.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    linkGoogleMaps: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     latitude: {
       type: DataTypes.STRING,
       defaultValue: "0",
