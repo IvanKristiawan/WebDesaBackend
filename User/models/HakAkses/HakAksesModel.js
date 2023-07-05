@@ -7,7 +7,7 @@ const { DataTypes } = Sequelize;
 const HakAkses = db.define(
   "hakaksess",
   {
-    // MASTER
+    // DESA
     rt: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
@@ -23,6 +23,25 @@ const HakAkses = db.define(
       defaultValue: false,
       allowNull: false,
     },
+
+    // Lokasi Web
+    lokasiPetinggi: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+      allowNull: false,
+    },
+    lokasiUmkm: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+      allowNull: false,
+    },
+    lokasiWisata: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+      allowNull: false,
+    },
+
+    // POSYANDU
     posyanduLansia: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,

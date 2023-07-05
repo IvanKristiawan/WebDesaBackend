@@ -12,6 +12,9 @@ const SettingRoute = require("./Setting/routes/SettingRoute.js");
 const RtRoute = require("./Master/routes/Rt/RtRoute.js");
 const PendudukRoute = require("./Master/routes/Penduduk/PendudukRoute.js");
 const PosyanduLansiaRoute = require("./Master/routes/PosyanduLansia/PosyanduLansiaRoute.js");
+const LokasiPetinggiRoute = require("./Master/routes/LokasiPetinggi/LokasiPetinggiRoute.js");
+const LokasiUmkmRoute = require("./Master/routes/LokasiUmkm/LokasiUmkmRoute.js");
+const LokasiWisataRoute = require("./Master/routes/LokasiWisata/LokasiWisataRoute.js");
 
 const app = express();
 app.use(cors());
@@ -25,5 +28,8 @@ app.use(SettingRoute);
 app.use(RtRoute);
 app.use(PendudukRoute);
 app.use(PosyanduLansiaRoute);
+app.use(LokasiPetinggiRoute);
+app.use(LokasiUmkmRoute);
+app.use(LokasiWisataRoute);
 
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));

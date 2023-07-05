@@ -45,11 +45,6 @@ const getPendudukById = async (req, res) => {
 };
 
 const savePenduduk = async (req, res) => {
-  Object.keys(req.body).forEach(function (k) {
-    if (typeof req.body[k] == "string") {
-      req.body[k] = req.body[k].toUpperCase().trim();
-    }
-  });
   try {
     // Find if KK already exist
     const penduduk = await Penduduk.findOne({
@@ -74,11 +69,6 @@ const savePenduduk = async (req, res) => {
 };
 
 const updatePenduduk = async (req, res) => {
-  Object.keys(req.body).forEach(function (k) {
-    if (typeof req.body[k] == "string") {
-      req.body[k] = req.body[k].toUpperCase().trim();
-    }
-  });
   try {
     // Find if KK already exist and not current one
     const penduduk = await Penduduk.findOne({
