@@ -40,6 +40,11 @@ const HakAkses = db.define(
       defaultValue: false,
       allowNull: false,
     },
+    umkm: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+      allowNull: false,
+    },
 
     // POSYANDU
     posyanduLansia: {
