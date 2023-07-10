@@ -52,6 +52,11 @@ const HakAkses = db.define(
       defaultValue: false,
       allowNull: false,
     },
+    posyanduBalita: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+      allowNull: false,
+    },
 
     // UTILITY
     profilUser: {
