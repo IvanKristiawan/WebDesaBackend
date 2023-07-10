@@ -6,44 +6,74 @@ const { DataTypes } = Sequelize;
 const PosyanduLansia = db.define(
   "posyandulansias",
   {
-    tglInputPosyanduLansia: {
+    tglInputLansia: {
       type: DataTypes.DATE,
       default: new Date(),
       allowNull: true,
     },
-    kkPosyanduLansia: {
+    namaLansia: {
       type: DataTypes.STRING,
       defaultValue: "",
       allowNull: true,
     },
-    nikPosyanduLansia: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-      allowNull: true,
-    },
-    namaPosyanduLansia: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-      allowNull: true,
-    },
-    umurPosyanduLansia: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-      allowNull: true,
-    },
-    tglLahirPosyanduLansia: {
+    tglLahirLansia: {
       type: DataTypes.DATE,
       default: new Date(),
       allowNull: true,
     },
-    bbPosyanduLansia: {
+    umurLansia: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+      allowNull: true,
+    },
+    noRmLansia: {
       type: DataTypes.STRING,
       defaultValue: "",
       allowNull: true,
     },
-    tensiPosyanduLansia: {
+    tglPemeriksaan: {
+      type: DataTypes.DATE,
+      default: new Date(),
+      allowNull: true,
+    },
+    tempatPemeriksaanLansia: {
       type: DataTypes.STRING,
       defaultValue: "",
+      allowNull: true,
+    },
+    noJaminanLansia: {
+      type: DataTypes.STRING,
+      defaultValue: "",
+      allowNull: true,
+    },
+    tekananDarahLansia: {
+      type: DataTypes.FLOAT,
+      defaultValue: 0,
+      allowNull: true,
+    },
+    gulaDarahLansia: {
+      type: DataTypes.FLOAT,
+      defaultValue: 0,
+      allowNull: true,
+    },
+    kolesterolLansia: {
+      type: DataTypes.FLOAT,
+      defaultValue: 0,
+      allowNull: true,
+    },
+    tbLansia: {
+      type: DataTypes.FLOAT,
+      defaultValue: 0,
+      allowNull: true,
+    },
+    bbLansia: {
+      type: DataTypes.FLOAT,
+      defaultValue: 0,
+      allowNull: true,
+    },
+    lpLansia: {
+      type: DataTypes.FLOAT,
+      defaultValue: 0,
       allowNull: true,
     },
   },

@@ -48,10 +48,10 @@ formatDate = (date) => {
   return `${date.getDate().toLocaleString("en-US", {
     minimumIntegerDigits: 2,
     useGrouping: false,
-  })}-${(date.getMonth() + 1).toLocaleString("en-US", {
+  })}/${(date.getMonth() + 1).toLocaleString("en-US", {
     minimumIntegerDigits: 2,
     useGrouping: false,
-  })}-${date.getFullYear()}`;
+  })}/${date.getFullYear()}`;
 };
 
 module.exports = {

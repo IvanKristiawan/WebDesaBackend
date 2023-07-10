@@ -10,27 +10,26 @@ const getPosyanduLansias = async (req, res) => {
       where: {
         [Op.and]: [
           {
-            tglInputPosyanduLansia: {
+            tglInputLansia: {
               [Op.gte]: new Date(req.body.dariTanggal),
             },
           },
           {
-            tglInputPosyanduLansia: {
+            tglInputLansia: {
               [Op.lte]: new Date(req.body.sampaiTanggal),
             },
           },
         ],
       },
-      order: [["kkPosyanduLansia", "ASC"]],
+      order: [["namaLansia", "ASC"]],
     });
 
     // Formatting date and Parsing json from string data
     for (let element of posyanduLansias) {
       let objectPosyanduLansia = {
         ...element.dataValues,
-        tglLahirPosyanduLansia: formatDate(
-          element.dataValues.tglLahirPosyanduLansia
-        ),
+        tglLahirLansiaFormatted: formatDate(element.dataValues.tglLahirLansia),
+        tglPemeriksaanFormatted: formatDate(element.dataValues.tglPemeriksaan),
       };
       tempAllPosyanduLansia.push(objectPosyanduLansia);
     }
