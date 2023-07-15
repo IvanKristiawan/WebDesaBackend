@@ -1,4 +1,5 @@
 const PosyanduLansia = require("../../models/PosyanduLansia/PosyanduLansiaModel.js");
+const TutupPeriode = require("../../../Accounting/TutupPeriode/models/TutupPeriodeModel.js");
 const { formatDate } = require("../../../helper/helper");
 const { Sequelize } = require("sequelize");
 const Op = Sequelize.Op;
@@ -8,6 +9,7 @@ const getPosyanduLansias = async (req, res) => {
     let tempAllPosyanduLansia = [];
     const posyanduLansias = await PosyanduLansia.findAll({
       where: {
+        status: "ADA",
         [Op.and]: [
           {
             tglInputLansia: {
@@ -52,6 +54,65 @@ const getPosyanduLansiaById = async (req, res) => {
   } catch (error) {
     // Error 404 = Not Found
     res.status(404).json({ message: error.message });
+  }
+};
+
+const generatePosyanduLansias = async (req, res) => {
+  try {
+    const periodes = await TutupPeriode.findOne({
+      order: [["createdAt", "DESC"]],
+    });
+    const posyanduLansias = await PosyanduLansia.findAll({
+      where: {
+        status: "ADA",
+        [Op.and]: [
+          {
+            tglInputLansia: {
+              [Op.gte]: new Date(periodes.dariTanggal),
+            },
+          },
+          {
+            tglInputLansia: {
+              [Op.lte]: new Date(periodes.sampaiTanggal),
+            },
+          },
+        ],
+      },
+      order: [["namaLansia", "ASC"]],
+    });
+
+    let tempTgl = new Date(periodes.dariTanggal);
+    let nextDateMonth = new Date(tempTgl.setMonth(tempTgl.getMonth() + 1));
+
+    if (posyanduLansias.length > 0) {
+      // Formatting date and Parsing json from string data
+      for (let element of posyanduLansias) {
+        try {
+          const {
+            id,
+            tekananDarahLansia,
+            gulaDarahLansia,
+            kolesterolLansia,
+            tbLansia,
+            bbLansia,
+            lpLansia,
+            ...otherDetails
+          } = element.dataValues;
+          await PosyanduLansia.create({
+            ...otherDetails,
+            tglInputLansia: nextDateMonth,
+          });
+        } catch (error) {
+          // Error 400 = Kesalahan dari sisi user
+          res.status(400).json({ message: error.message });
+        }
+      }
+    }
+
+    res.status(200).json("Generated!");
+  } catch (error) {
+    // Error 500 = Kesalahan di server
+    res.status(500).json({ message: error.message });
   }
 };
 
@@ -125,6 +186,7 @@ const deletePosyanduLansia = async (req, res) => {
 module.exports = {
   getPosyanduLansias,
   getPosyanduLansiaById,
+  generatePosyanduLansias,
   savePosyanduLansia,
   updatePosyanduLansia,
   deletePosyanduLansia,

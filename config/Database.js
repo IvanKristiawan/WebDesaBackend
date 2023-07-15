@@ -4,6 +4,7 @@ const { Sequelize } = require("sequelize");
 const db = new Sequelize("kembang_putihan", "root", "", {
   host: "localhost",
   dialect: "mysql",
+  logging: false,
 });
 
 // Akun MySql Hosting

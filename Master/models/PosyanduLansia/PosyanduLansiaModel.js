@@ -76,6 +76,12 @@ const PosyanduLansia = db.define(
       defaultValue: 0,
       allowNull: true,
     },
+
+    status: {
+      type: DataTypes.STRING,
+      defaultValue: "ADA", // ADA, MENGINGGAL, PINDAH
+      allowNull: true,
+    },
   },
   {
     freezeTableName: true,
