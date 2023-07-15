@@ -46,12 +46,12 @@ const PosyanduBalita = db.define(
       defaultValue: "",
       allowNull: true,
     },
-    beratBadanLamaBalita: {
+    beratBadanLahirBalita: {
       type: DataTypes.INTEGER,
       defaultValue: 0,
       allowNull: true,
     },
-    panjangBadanLamaBalita: {
+    panjangBadanLahirBalita: {
       type: DataTypes.INTEGER,
       defaultValue: 0,
       allowNull: true,
