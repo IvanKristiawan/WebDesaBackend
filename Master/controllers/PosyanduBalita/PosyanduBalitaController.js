@@ -1,6 +1,7 @@
 const PosyanduBalita = require("../../models/PosyanduBalita/PosyanduBalitaModel.js");
 const { formatDate } = require("../../../helper/helper");
 const { Sequelize } = require("sequelize");
+const TutupPeriode = require("../../../Accounting/TutupPeriode/models/TutupPeriodeModel.js");
 const Op = Sequelize.Op;
 
 const getPosyanduBalitas = async (req, res) => {
@@ -51,6 +52,67 @@ const getPosyanduBalitaById = async (req, res) => {
   } catch (error) {
     // Error 404 = Not Found
     res.status(404).json({ message: error.message });
+  }
+};
+
+const generatePosyanduBalitas = async (req, res) => {
+  try {
+    const periodes = await TutupPeriode.findOne({
+      order: [["createdAt", "DESC"]],
+    });
+    const posyanduBalitas = await PosyanduBalita.findAll({
+      where: {
+        umurBalita: {
+          [Op.lt]: 60,
+        },
+        status: "ADA",
+        [Op.and]: [
+          {
+            tglInputBalita: {
+              [Op.gte]: new Date(periodes.dariTanggal),
+            },
+          },
+          {
+            tglInputBalita: {
+              [Op.lte]: new Date(periodes.sampaiTanggal),
+            },
+          },
+        ],
+      },
+      order: [["namaBalita", "ASC"]],
+    });
+
+    let tempTgl = new Date(periodes.dariTanggal);
+    let nextDateMonth = new Date(tempTgl.setMonth(tempTgl.getMonth() + 1));
+
+    if (posyanduBalitas.length > 0) {
+      // Formatting date and Parsing json from string data
+      for (let element of posyanduBalitas) {
+        try {
+          const {
+            id,
+            beratBadanBalita,
+            panjangBadanBalita,
+            lingkarLenganAtasBalita,
+            lingkarKepalaBalita,
+            ...otherDetails
+          } = element.dataValues;
+          await PosyanduBalita.create({
+            ...otherDetails,
+            umurBalita: otherDetails.umurBalita + 1,
+            tglInputBalita: nextDateMonth,
+          });
+        } catch (error) {
+          // Error 400 = Kesalahan dari sisi user
+          res.status(400).json({ message: error.message });
+        }
+      }
+    }
+
+    res.status(200).json("Generated!");
+  } catch (error) {
+    // Error 500 = Kesalahan di server
+    res.status(500).json({ message: error.message });
   }
 };
 
@@ -124,6 +186,7 @@ const deletePosyanduBalita = async (req, res) => {
 module.exports = {
   getPosyanduBalitas,
   getPosyanduBalitaById,
+  generatePosyanduBalitas,
   savePosyanduBalita,
   updatePosyanduBalita,
   deletePosyanduBalita,

@@ -9,7 +9,6 @@ const getPosyanduLansias = async (req, res) => {
     let tempAllPosyanduLansia = [];
     const posyanduLansias = await PosyanduLansia.findAll({
       where: {
-        status: "ADA",
         [Op.and]: [
           {
             tglInputLansia: {
