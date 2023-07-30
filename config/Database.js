@@ -8,7 +8,7 @@ const db = new Sequelize("kembang_putihan", "root", "", {
 });
 
 // Akun MySql Hosting
-// const db = new Sequelize("n1578302_kembang_putihan", "n1578302_ivan", "Damnfly*369", {
+// const db = new Sequelize("n1578302_kembang_putihan", "n1578302_ivan", "kembangputihan", {
 //   host: "127.0.0.1",
 //   dialect: "mysql",
 // });
