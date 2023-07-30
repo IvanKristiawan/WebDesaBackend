@@ -19,6 +19,14 @@ const DaftarPenduduk = db.define(
             type: DataTypes.STRING,
             allowNull: false,
         },
+        jenisKelaminPenduduk: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        statusPenduduk: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
 
         // Foreign Key Penduduk
         pendudukId: {

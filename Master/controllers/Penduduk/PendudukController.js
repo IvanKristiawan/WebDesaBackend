@@ -3,9 +3,10 @@ const Rt = require("../../models/Rt/RtModel.js");
 
 const getPenduduks = async (req, res) => {
   try {
+    console.log("test");
     const penduduks = await Penduduk.findAll({
       include: [{ model: Rt }],
-      order: [["nikPenduduk", "ASC"]],
+      order: [["namaPenduduk", "ASC"]],
     });
     res.status(200).json(penduduks);
   } catch (error) {
@@ -21,6 +22,7 @@ const getPendudukByRt = async (req, res) => {
         rtId: req.body.rtId,
       },
       include: [{ model: Rt }],
+      order: [["namaPenduduk", "ASC"]],
     });
     res.status(200).json(penduduk);
   } catch (error) {
